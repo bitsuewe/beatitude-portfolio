@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A dynamic and engaging portfolio showcasing skills and projects">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">  
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #343a40;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffffff;
+            --text-color: #333;
+            --light-text-color: #666;
+            --button-color: #007bff;
+            --button-hover-color: #0056b3;
+            --font-family: 'Roboto', sans-serif;
+            --heading-font: 'Open Sans', sans-serif;
+            --background-color-light: #f8f9fa;
+            --background-color-dark: #121212;
+            --text-color-dark: #141516;
+            --primary-color-dark: #1c1c1c;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background: linear-gradient(90deg, #000000, #6b6b6b);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+        
+
+        @media (max-width: 768px) {
+           
+
+            
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .photo {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20%;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .content {
+            background: #444;
+        }
+        .dark-mode main {
+            background: #444;
+        }
+        .dark-mode section {
+            background: #252525;
+        }
+        .dark-mode section .skill {
+            background: #494848;
+        }
+        .dark-mode section .project {
+            background: #494848;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 3em;
+            padding: 3em;
+            margin-top: 2em;
+        }
+        #projects {
+            
+            margin-bottom: 2em;
+        }
+        #contact {
+            
+            margin-bottom: 2em;
+        }
+        .projects, .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 2em;
+        }
+
+        .project, .skill {
+            padding: 1.5em;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover, .skill:hover {
+            transform: translateY(-5px);
+        }
+        section {
+            background-color: #d1cdcd;
+            padding: 2.5em;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding-top: NONE;
+            padding: 10px;
+            background: linear-gradient(90deg, #000000, #5e5d5d);
+            color: #fff;
+            font-size: 14px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer a {
+            color: #ffe700;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode {
+            background-color: #181818;
+            color: #e4e4e4;
+        }
+
+        .dark-mode header {
+            background: linear-gradient(90deg, #282828, #3a3a3a);
+        }
+
+        .dark-mode nav a {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ddd;
+        }
+
+        .dark-mode nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #f4f4f4;
+            border: 3px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            z-index: 87654345678;
+        }
+
+        .dark-mode-toggle.on {
+            background-color: #007bff;
+            transform: rotate(180deg);
+        }
+
+        .dark-mode .dark-mode-toggle {
+            background-color: #444;
+            border-color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: 20px;
+                padding: 20px;
+            }}
+        @media only screen and (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.6em 1.2em;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 1em;
+        }
+
+        .btn:hover {
+            background-color:   #0056b3;
+        }
+        #contact a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="dark-mode-toggle" id="darkModeToggle" title="dark-mode">
+        <span>🌙</span>
+    </div>
+
+    <header>
+        <h1>Beatitude.___</h1>
+
+        <button id="hamburgerMenu" class="navbar-toggler">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div id="mobileNav" class="collapse navbar-collapse">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</div>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        
+    </header>
+    
+
+    <div class="content">
+        <div class="photo">
+            <img src="codes/html/New folder/web/img/mew.jpg" alt="Profile Photo">
+            <h1 id="name">Bitsue Welde</h1>
+        <p class="tagline">Software Developer | Student | Innovator</p>
+    
+        </div>
+       
+        <h2>Welcome to My Portfolio</h2>
+        <p>Hi, I'm Bitsue Welde ,a passionate developer with skills in creating dynamic and responsive web applications. Explore my projects and feel free to connect!</p>
+        </div>
+        <main>
+            <section id="about">
+                <h2>About Me</h2>
+                    <p>Hello! I'm Bitsue Welde, a passionate Software Developer and App Developer, currently a student at Adama Science and Technology University. I specialize in building responsive web applications and mobile apps using modern technologies. I'm driven by the challenge of solving problems through clean and efficient code. My goal is to build innovative software solutions that improve lives and businesses.</p>
+                    <p>With a deep understanding of both front-end and back-end technologies, I strive to create seamless and intuitive user experiences. I'm constantly learning and keeping up with the latest trends and advancements in technology. Whether it's web development, app development, or tackling new projects, I'm excited about the endless possibilities in the tech world.</p>
+                    <p>Feel free to explore my work and get in touch with me for any collaboration or inquiries!</p>
+                
+            </section>
+    
+            <section id="skills" class="skills">
+                <h2>Skills</h2>
+                <div class="skill">
+                    <h3>HTML5</h3>
+                    <p>Proficient in structuring web content and creating accessible websites.</p>
+                </div>
+                <div class="skill">
+                    <h3>CSS3</h3>
+                    <p>Experience with responsive layouts, animations, and CSS preprocessors.</p>
+                </div>
+                <div class="skill">
+                    <h3>JavaScript</h3>
+                    <p>Strong knowledge of modern JavaScript, including ES6+ features.</p>
+                </div>
+                <div class="skill">
+                    <h3>React.js</h3>
+                    <p>Built dynamic user interfaces and SPAs with React, Redux, and React Router.</p>
+                </div>
+            </section>
+        </main>
+        <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>Designed and developed a responsive e-commerce platform with React.js and Node.js.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Built a portfolio website using HTML, CSS, and JavaScript to showcase my work.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Built a portfolio website using HTML, CSS, and JavaScript to showcase my work.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Built a portfolio website using HTML, CSS, and JavaScript to showcase my work.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Built a portfolio website using HTML, CSS, and JavaScript to showcase my work.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Built a portfolio website using HTML, CSS, and JavaScript to showcase my work.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Built a portfolio website using HTML, CSS, and JavaScript to showcase my work.</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+    <h2>Contact</h2>
+    <p>If you'd like to collaborate or get in touch, feel free to send me a message at <a href="mailto:bitsuew@gmail.com">bitsuew@gmail.com</a> or connect with me on <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>.</p>
+</section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. Built with 💖 and passion. <a href="#">Back to top</a></p>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+       
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.classList.toggle('on');
+            darkModeToggle.querySelector('span').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        
+    </script>
+</body>
+</html>
